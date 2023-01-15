@@ -4,18 +4,19 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.security.core.GrantedAuthority;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -49,8 +50,15 @@ public class Aluno {
   @JsonIgnore
   private List<AvaliacaoFisica> avaliacoes = new ArrayList<>();
 
-public Iterable<GrantedAuthority> getRoles() {
-    return null;
+  @ElementCollection(fetch = FetchType.EAGER)
+  @CollectionTable(name = "tab_user_roles", joinColumns = @JoinColumn(name = "user_id"))
+  @Column(name = "role_id") 
+  private List<String> roles = new ArrayList<>();
+
+public void setDataDeNascimento(LocalDate localDate) {
+}
+
+public void add(String string) {
 }
 
 
