@@ -26,6 +26,7 @@ public class AlunoServiceImpl implements IAlunoService {
     aluno.setCpf(form.getCpf());
     aluno.setBairro(form.getBairro());
     aluno.setDataDeNascimento(form.getDataDeNascimento());
+    aluno.setPassword(form.getPassword());
 
     return repository.save(aluno);
   }
