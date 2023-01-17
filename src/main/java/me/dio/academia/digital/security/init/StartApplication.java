@@ -31,7 +31,7 @@ public class StartApplication implements CommandLineRunner {
             user.setBairro("adminBairro");
             user.setDataDeNascimento(dataNascimento);
             user.setCpf("12332112393");
-            user.setPassword("master123");
+            user.setPassword("{noop}master123");
             ((Aluno) user.getRoles()).add("MANAGERS");
             repository.save(user);
         }
@@ -43,7 +43,7 @@ public class StartApplication implements CommandLineRunner {
             user.setBairro("alunoBairro");
             user.setDataDeNascimento(dataNascimento);
             user.setCpf("78998778912");
-            user.setPassword("aluno123");
+            user.setPassword("{noop}aluno123");
             ((Aluno) user.getRoles()).add("USERS");
             repository.save(user);
         }
